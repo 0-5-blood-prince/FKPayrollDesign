@@ -3,37 +3,52 @@
 import java.util.*;
 // import SourceCode.*;
 public class Employee{
+	enum PaymentType
+	{
+		HOURLY , SALARY ;
+	}
 	public int id;
 	public String name;
 	public String address;
-	private Boolean isHourlyPay;
-	private Boolean isSalaryPay;
 	public PaymentInfo payment;
-
+    private PaymentType ptype;
 	public Employee(int id,String name,String address)
 	{
 		this.id = id;
 		this.name = name;
 		this.address = address;
 	}
-	void UpdateName(String name)
+	public void UpdateName(String name)
 	{
 		this.name = name;
 	}
-	void UpdateAddress(String address)
+	public void UpdateAddress(String address)
 	{
 		this.address = address;
 	}
-	void UpdatePaymentInfo(PaymentInfo p)
+	public void UpdatePaymentInfo(PaymentInfo p)
 	{
 			this.payment = p;
+			if(p.gettype()==1)
+			{	
+				this.ptype = PaymentType.HOURLY;
+			}
+			if(p.gettype()==2)
+			{
+			    this.ptype = PaymentType.SALARY;
+			}
 	}
-	void setHourly()
+	public Boolean isHourlyPay()
 	{
-		return;
+		return this.ptype.ordinal()==0;
 	}
-	void setSalary()
+	public Boolean isSalaryPay()
 	{
-		return;
+		return this.ptype.ordinal()==1;
 	}
+	public PaymentInfo getPaymentInfo()
+	{
+		return this.payment;
+	}
+	
 }
