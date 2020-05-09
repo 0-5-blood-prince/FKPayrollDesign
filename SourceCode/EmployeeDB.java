@@ -11,7 +11,9 @@ public class EmployeeDB{
 	//		static is best
 	//Integer cause No primitive in generics
 	private static HashMap < Integer, Employee > DB = new HashMap <Integer , Employee>();
-	private static int LatestId  = 0;
+	private static HashMap < Integer, Employee > UnionDB = new HashMap <Integer , Employee>();
+	private static int LatestId  = 0; 
+	private static int LatestMemId = 0;
 	EmployeeDB()
 	{
 		System.out.println("DataBase_Object_Obtained");
@@ -21,6 +23,23 @@ public class EmployeeDB{
 		LatestId+=1;
 		return LatestId;
 	}
+	public int getLatestMemId()
+	{
+		LatestMemId+=1;
+		return LatestMemId;
+	}
+	public void addMemeber(int id , Employee e)
+	{
+		UnionDB.put(id,e);
+	}
+	public void removeMember(int id , Employee e)
+	{
+		UnionDB.remove(id);
+	}
+	public Boolean isInUnion(int id)
+	{
+		return UnionDB.containsKey(id);
+	}
 	public void addEmployee(int id , Employee e)
 	{
 		DB.put(id,e);
@@ -28,6 +47,7 @@ public class EmployeeDB{
 	public void removeEmployee(int id , Employee e)
 	{
 		DB.remove(id);
+		removeMember(id,e);
 	}
 	public Employee getEmployee(int id)
 	{
@@ -41,6 +61,14 @@ public class EmployeeDB{
 	{
 		System.out.println("EmployeeID	Name");
 		for (Map.Entry<Integer,Employee> entry : DB.entrySet())
+		{
+			System.out.println(entry.getKey()+"		"+entry.getValue().name);
+		}
+	}
+	public void DisplayMemebers()
+	{
+		System.out.println("MemberID	Name");
+		for (Map.Entry<Integer,Employee> entry : UnionDB.entrySet())
 		{
 			System.out.println(entry.getKey()+"		"+entry.getValue().name);
 		}
