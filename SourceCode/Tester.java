@@ -1,5 +1,6 @@
 
 import java.util.*;
+import java.time.*;
 public class Tester
 {
 	public static void TestAddEmployee(EmployeeDB db)
@@ -20,6 +21,15 @@ public class Tester
 		a.Do();
 		b.Do();
 	}
+	public static void TestPostTimeCard(EmployeeDB db)
+	{
+		PostTimeCard a = new PostTimeCard(1,LocalDate.now(),7,db);
+		a.Do();
+				PostTimeCard b = new PostTimeCard(4,LocalDate.now(),5,db);
+				b.Do();
+			System.out.println( ((HourlyPay)db.getEmployee(1).payment).HourMap );
+
+	}
 	public static void main(String[] args) {
 		EmployeeDB db = new EmployeeDB();
 		//Testing Add
@@ -28,7 +38,7 @@ public class Tester
 		//Testing Remove
 		TestRemoveEmployee(db);
 		db.DisplayEmployees();
-
-
+		TestPostTimeCard(db);
+		db.DisplayEmployees();
 	}
 }
