@@ -5,7 +5,7 @@ public class SalaryPay implements PaymentInfo
 {
 	private double commissionrate;
 	private double salary;
-	private HashMap <LocalDate , Double> Sales;
+	public HashMap <LocalDate , Double> Sales;
 	SalaryPay(double salary,double commissionrate)
 	{
 		this.salary = salary;
