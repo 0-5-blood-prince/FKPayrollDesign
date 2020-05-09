@@ -4,7 +4,7 @@ import java.time.LocalDate;
 public class HourlyPay implements PaymentInfo
 {
 	private double hourlyrate;
-	private HashMap <LocalDate , Double> HourMap;
+	public HashMap <LocalDate , Double> HourMap;
 	HourlyPay(double hourlyrate)
 	{
 		this.hourlyrate = hourlyrate;
