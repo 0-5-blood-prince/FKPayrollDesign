@@ -30,6 +30,15 @@ public class Tester
 			System.out.println( ((HourlyPay)db.getEmployee(1).payment).HourMap );
 
 	}
+	public static void TestSalesReceipt(EmployeeDB db)
+	{
+		SalesReceipt a = new SalesReceipt(1,LocalDate.now(),7000,db);
+		a.Do();
+				SalesReceipt b = new SalesReceipt(6,LocalDate.now(),5000,db);
+				b.Do();
+			System.out.println( ((SalaryPay)db.getEmployee(6).payment).Sales );
+
+	}
 	public static void main(String[] args) {
 		EmployeeDB db = new EmployeeDB();
 		//Testing Add
@@ -39,6 +48,8 @@ public class Tester
 		TestRemoveEmployee(db);
 		db.DisplayEmployees();
 		TestPostTimeCard(db);
+		db.DisplayEmployees();
+		TestSalesReceipt(db);
 		db.DisplayEmployees();
 	}
 }
