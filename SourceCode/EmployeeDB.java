@@ -27,6 +27,10 @@ public class EmployeeDB{
 	{
 		return DB.get(id);
 	}
+	public Boolean isPresent(int id)
+	{
+		return DB.containsKey(id);
+	}
 	public void DisplayEmployees()
 	{
 		System.out.println("EmployeeID	Name");
