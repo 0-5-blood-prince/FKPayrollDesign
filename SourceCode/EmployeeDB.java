@@ -16,10 +16,10 @@ public class EmployeeDB{
 	//		static is best
 	//Integer cause No primitive in generics
 //	Gson gson = new Gson();
-	private static HashMap < Integer, Employee > DB = new HashMap <Integer , Employee>();
-	private static HashMap < Integer, Employee > UnionDB = new HashMap <Integer , Employee>();
+	private static HashMap < Integer, Employee > DB = new HashMap<>();
+	private static HashMap < Integer, Employee > UnionDB = new HashMap<>();
 	private static int LatestId  = 0; 
-	private static int LatestMemId = 0;
+//	private static int LatestMemId = 0;
 	EmployeeDB()
 	{
 		System.out.println("DataBase_Object_Obtained");
@@ -31,11 +31,7 @@ public class EmployeeDB{
 		LatestId+=1;
 		return LatestId;
 	}
-	public int getLatestMemId()
-	{
-		LatestMemId+=1;
-		return LatestMemId;
-	}
+
 	public void addMember(int id , Employee e)
 	{
 		UnionDB.put(id,e);
@@ -64,12 +60,13 @@ public class EmployeeDB{
 	public Employee getMember(int id)
 	{
 		Employee e = UnionDB.get(id);
-		if(e.equals(getEmployee(id))){}
+		if(e.equals(getEmployee(id))) {
+			return e;
+		}
 		else
 		{
-			System.out.println("Shouldn't Happen DB != UnionDB");
+			return null;
 		}
-		return e;
 	}
 	public Boolean isPresent(int id)
 	{
@@ -77,7 +74,7 @@ public class EmployeeDB{
 	}
 	public HashMap<Integer,Employee> getDB()
 	{
-		return this.DB;
+		return DB;
 	}
 	public void DisplayEmployees()
 	{
