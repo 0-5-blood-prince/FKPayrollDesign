@@ -10,9 +10,9 @@ public class Employee{
 	public int id;
 	public String name;
 	public String address;
-	public PaymentInfo payment;
+	public transient PaymentInfo payment;
     private PaymentType ptype;
-    public Deductions deduct;
+    public transient Deductions deduct;
 	public Employee(int id,String name,String address)
 	{
 		this.id = id;
