@@ -1,12 +1,15 @@
 // package SourceCode;
 import java.time.LocalDate;
-public interface PaymentInfo
+public abstract class PaymentInfo
 {
 	//type 1 Hourly
 	//type 2 Salary
-	public int gettype();
+	public PaymentInfo()
+	{
+	}
+	public abstract int gettype();
 	//If 0 not time
-	public Boolean isPay(LocalDate d);
-	public double calculatePay(LocalDate d);
+	public abstract Boolean isPay(LocalDate d);
+	public abstract double calculatePay(LocalDate d);
 
 }
