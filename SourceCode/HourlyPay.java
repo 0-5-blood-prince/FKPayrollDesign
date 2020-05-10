@@ -33,9 +33,32 @@ public class HourlyPay implements PaymentInfo
 	{
 		return d.getDayOfWeek().getValue()==5; 
 	}
+	public void Clear()
+	{
+		HourMap.clear();
+	}
 	public double calculatePay(LocalDate d)
 	{
-		return 0;
+		if(isPay(d))
+		{
+			double pay = 0;
+			Iterator it = HourMap.entrySet().iterator(); 
+	        while (it.hasNext()) { 
+	        	Map.Entry elem = (Map.Entry)it.next();
+	        	double hours =((Double)elem.getValue()).doubleValue();
+	        	if(hours>8.0)
+	        	{
+	        		pay+= ( hourlyrate * hours)+(hourlyrate*(hours-8)/2);
+	        	}
+	        	else
+	        	{
+	        		pay+= hourlyrate * hours;
+	        	}
+	        	return pay;
+	        
+	        }
+		}
+			return 0;
 	}
 
 
