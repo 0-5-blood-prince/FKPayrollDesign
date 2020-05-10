@@ -1,5 +1,6 @@
+import java.time.LocalDate;
 import java.util.*;
-import java.time.*;
+
 public class UnionCharges
 {
 	public HashMap <LocalDate , Double> Fees;
@@ -7,14 +8,14 @@ public class UnionCharges
 	public double weeklyDueRate;
 	UnionCharges(double weeklyDueRate)
 	{
-		this.Fees = new HashMap <LocalDate , Double> ();
-		this.Dues = new HashMap <LocalDate , Double> ();
+		this.Fees = new HashMap<>();
+		this.Dues = new HashMap<>();
 		this.weeklyDueRate = weeklyDueRate;
 	}
 	UnionCharges()
 	{
-		this.Fees = new HashMap <LocalDate , Double> ();
-		this.Dues = new HashMap <LocalDate , Double> ();
+		this.Fees = new HashMap<>();
+		this.Dues = new HashMap<>();
 		this.weeklyDueRate = 0;
 	}
 	public void updateFee(LocalDate d, double a)
@@ -33,10 +34,7 @@ public class UnionCharges
 	{
 		Dues.put(d,this.weeklyDueRate);
 	}
-	// public Double getDue(LocalDate d)
-	// {
-	// 	return Dues.get(d);
-	// }
+
 	public void clearDues()
 	{
 		Dues.clear();
