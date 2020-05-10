@@ -1,6 +1,11 @@
 // package SourceCode;
 // import SourceCode.*;
-import java.util.*;
+
+//import com.google.gson.Gson;
+
+import java.util.HashMap;
+import java.util.Map;
+
 // import java.io.IOException;
 // // import com.fasterxml.jackson.core.JsonGenerationException;
 // import com.fasterxml.jackson.databind.JsonMappingException;
@@ -10,6 +15,7 @@ public class EmployeeDB{
 	//Will decide later
 	//		static is best
 	//Integer cause No primitive in generics
+//	Gson gson = new Gson();
 	private static HashMap < Integer, Employee > DB = new HashMap <Integer , Employee>();
 	private static HashMap < Integer, Employee > UnionDB = new HashMap <Integer , Employee>();
 	private static int LatestId  = 0; 
@@ -17,6 +23,8 @@ public class EmployeeDB{
 	EmployeeDB()
 	{
 		System.out.println("DataBase_Object_Obtained");
+//		String jsonString = gson.toJson("String");
+//		System.out.println(jsonString);
 	}
 	public int getLatestId()
 	{
