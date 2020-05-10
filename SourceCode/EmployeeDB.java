@@ -36,7 +36,7 @@ public class EmployeeDB{
 	{
 		UnionDB.put(id,e);
 	}
-	public void removeMember(int id , Employee e)
+	public void removeMember(int id)
 	{
 		UnionDB.remove(id);
 	}
@@ -48,10 +48,10 @@ public class EmployeeDB{
 	{
 		DB.put(id,e);
 	}
-	public void removeEmployee(int id , Employee e)
+	public void removeEmployee(int id)
 	{
 		DB.remove(id);
-		if(this.isInUnion(id)) this.removeMember(id,e);
+		if(this.isInUnion(id)) this.removeMember(id);
 	}
 	public Employee getEmployee(int id)
 	{
