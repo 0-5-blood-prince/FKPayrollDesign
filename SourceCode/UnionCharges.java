@@ -37,8 +37,27 @@ public class UnionCharges
 	// {
 	// 	return Dues.get(d);
 	// }
+	public void clearDues()
+	{
+		Dues.clear();
+	}
+	public void clearFees()
+	{
+		Fees.clear();
+	}
 	public double calculateCharge(LocalDate d)
 	{
-		return 0;
+		double deduce = 0;
+			Iterator it = Dues.entrySet().iterator(); 
+	        while (it.hasNext()) { 
+	        	Map.Entry elem = (Map.Entry)it.next();
+	        	deduce += ( ((Double)elem.getValue()).doubleValue());
+	        }
+			it = Fees.entrySet().iterator(); 
+	        while (it.hasNext()) { 
+	        	Map.Entry elem = (Map.Entry)it.next();
+	        	deduce += (((Double)elem.getValue()).doubleValue());
+	        }
+		return deduce;
 	}
 }
