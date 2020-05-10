@@ -1,7 +1,7 @@
 // import org.joda.time.LocalDate;
 import java.util.*;
 import java.time.*;
-public class SalaryPay implements PaymentInfo
+public class SalaryPay extends PaymentInfo
 {
 	private double commissionrate;
 	private double salary;
@@ -30,7 +30,7 @@ public class SalaryPay implements PaymentInfo
 	}
 	public void UpdateSales(LocalDate d,double amount)
 	{
-		Sales.put(d,new Double(amount));
+		Sales.put(d, amount);
 	}
 	public Double getAmount(LocalDate d)
 	{
