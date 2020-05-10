@@ -1,6 +1,6 @@
 public class RemoveEmployee implements Action{
-	int id;
-	EmployeeDB db;
+	private int id;
+	private EmployeeDB db;
 	// int type;
 	public RemoveEmployee(int id,EmployeeDB db)
 	{
@@ -11,13 +11,6 @@ public class RemoveEmployee implements Action{
 	public void Do()
 	{
 		//Implement Ispresent DB
-		if(db.isPresent(id))
-		{
-			db.removeEmployee(id,db.getEmployee(id));
-		}
-		else
-		{
-			System.out.println("Error: Given Id Not Found");
-		}
+		if(db.isPresent(id)) db.removeEmployee(id, db.getEmployee(id));
 	}
 }
