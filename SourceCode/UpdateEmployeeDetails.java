@@ -1,8 +1,8 @@
 public class UpdateEmployeeDetails implements UpdateDetails {
-    public String name;
-    public String address;
-    public EmployeeDB db;
-    public int id;
+    private String name;
+    private String address;
+    private EmployeeDB db;
+    private int id;
     UpdateEmployeeDetails(int id,String name,String address,EmployeeDB db)
     {
         this.name = name;
