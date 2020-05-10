@@ -54,9 +54,17 @@ public class Deductions
 	{
 		uc.updateDueRate(duerate);
 	}
+	public void clearDeductions()
+	{
+		d.clearDues();
+		uc.clearDues();
+		uc.clearFees();
+	}
 	public double calculateDeductions(LocalDate date)
 	{
-		return d.calculateDue(date)+uc.calculateCharge(date);
+		double dues = d.calculateDue(date);
+		double servicecharges = uc.calculateCharge(date);
+		return dues+servicecharges;
 	}
 
 }
