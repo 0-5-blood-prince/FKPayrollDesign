@@ -46,6 +46,10 @@ public class Deductions
 	// 	}
 	// 	return 0.0;
 	// }
+	public void DisplayFees()
+	{
+		System.out.println(uc.Fees);
+	}
 	public void updateDueRate(double duerate)
 	{
 		uc.updateDueRate(duerate);
