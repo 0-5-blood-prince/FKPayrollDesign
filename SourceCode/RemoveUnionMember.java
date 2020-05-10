@@ -21,7 +21,7 @@ public class RemoveUnionMember implements Action{
 				deduct.updateDueRate(0);
 				e.UpdateDeductionInfo(deduct);
 				//So this means Deduction Account is open once opened
-				db.removeMember(id,db.getEmployee(id));
+				db.removeMember(id);
 			}
 
 		}
