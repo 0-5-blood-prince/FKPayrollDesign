@@ -15,8 +15,19 @@ public class Due
 	{
 		return Dues.get(d);
 	}
+	public void clearDues()
+	{
+		Dues.clear();
+	}
 	public double calculateDue(LocalDate d)
 	{
-		return 0;
+		//Not called Unless its PayDay
+		double deduce = 0;
+			Iterator it = Dues.entrySet().iterator(); 
+	        while (it.hasNext()) { 
+	        	Map.Entry elem = (Map.Entry)it.next();
+	        	deduce += ((Double)elem.getValue()).doubleValue();
+	        }
+	        return deduce;
 	}
 }
