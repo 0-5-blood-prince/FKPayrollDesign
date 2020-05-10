@@ -11,6 +11,6 @@ public class RemoveEmployee implements Action{
 	public void Do()
 	{
 		//Implement Ispresent DB
-		if(db.isPresent(id)) db.removeEmployee(id, db.getEmployee(id));
+		if(db.isPresent(id)) db.removeEmployee(id);
 	}
 }
