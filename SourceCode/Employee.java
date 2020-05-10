@@ -12,11 +12,13 @@ public class Employee{
 	public String address;
 	public PaymentInfo payment;
     private PaymentType ptype;
+    public Deductions deduct;
 	public Employee(int id,String name,String address)
 	{
 		this.id = id;
 		this.name = name;
 		this.address = address;
+		// this.deduct = new Deductions();
 	}
 	public void UpdateName(String name)
 	{
@@ -37,6 +39,18 @@ public class Employee{
 			{
 			    this.ptype = PaymentType.SALARY;
 			}
+	}
+	public Deductions getDeductionInfo()
+	{
+		return this.deduct;
+	}
+	public Boolean isDeductOpen()
+	{
+		return this.deduct!=null;
+	}
+	public void UpdateDeductionInfo(Deductions d)
+	{
+		this.deduct = d;
 	}
 	public Boolean isHourlyPay()
 	{
