@@ -28,7 +28,7 @@ public class EmployeeDB{
 		LatestMemId+=1;
 		return LatestMemId;
 	}
-	public void addMemeber(int id , Employee e)
+	public void addMember(int id , Employee e)
 	{
 		UnionDB.put(id,e);
 	}
@@ -47,7 +47,7 @@ public class EmployeeDB{
 	public void removeEmployee(int id , Employee e)
 	{
 		DB.remove(id);
-		removeMember(id,e);
+		if(this.isInUnion(id)) this.removeMember(id,e);
 	}
 	public Employee getEmployee(int id)
 	{
@@ -65,7 +65,7 @@ public class EmployeeDB{
 			System.out.println(entry.getKey()+"		"+entry.getValue().name);
 		}
 	}
-	public void DisplayMemebers()
+	public void DisplayMembers()
 	{
 		System.out.println("MemberID	Name");
 		for (Map.Entry<Integer,Employee> entry : UnionDB.entrySet())
