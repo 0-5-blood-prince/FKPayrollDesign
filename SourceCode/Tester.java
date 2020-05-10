@@ -39,6 +39,18 @@ public class Tester
 			System.out.println( ((SalaryPay)db.getEmployee(6).payment).Sales );
 
 	}
+	public static void CheckUnionMemberChanges(EmployeeDB db)
+	{
+		AddUnionMember a = new AddUnionMember(1,600,db);
+		AddUnionMember b = new AddUnionMember(3,800,db);
+		a.Do();b.Do();
+		db.DisplayMembers();
+		RemoveUnionMember c = new RemoveUnionMember(2,db);
+		RemoveUnionMember d = new RemoveUnionMember(1,db);
+		c.Do();d.Do();
+		db.DisplayMembers();
+
+	}
 	public static void main(String[] args) {
 		EmployeeDB db = new EmployeeDB();
 		//Testing Add
@@ -51,5 +63,7 @@ public class Tester
 		db.DisplayEmployees();
 		TestSalesReceipt(db);
 		db.DisplayEmployees();
+		CheckUnionMemberChanges(db);
+
 	}
 }
