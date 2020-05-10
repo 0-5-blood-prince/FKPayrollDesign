@@ -9,7 +9,7 @@ public class HourlyPay extends PaymentInfo
 	{
 		this.hourlyrate = hourlyrate;
 		// this.commissionrate = commissionrate;
-		this.HourMap = new HashMap <LocalDate , Double>();
+		this.HourMap = new HashMap<>();
 	}  
 	
 	public void UpdateHourlyrate(double rate)
