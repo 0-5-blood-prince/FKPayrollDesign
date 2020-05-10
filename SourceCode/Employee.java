@@ -1,6 +1,3 @@
-
-
-import java.util.*;
 // import SourceCode.*;
 public class Employee{
 	enum PaymentType
