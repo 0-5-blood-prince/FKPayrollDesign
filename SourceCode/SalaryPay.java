@@ -10,7 +10,7 @@ public class SalaryPay extends PaymentInfo
 	{
 		this.salary = salary;
 		this.commissionrate = commissionrate;
-		this.Sales = new HashMap <LocalDate , Double>();
+		this.Sales = new HashMap<>();
 	}  
 	SalaryPay(double salary)
 	{
