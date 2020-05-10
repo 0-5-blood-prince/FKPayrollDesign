@@ -51,7 +51,16 @@ public class Tester
 		db.DisplayMembers();
 
 	}
-	public static void main(String[] args) {
+	public static void TestServiceFee(EmployeeDB db)
+	{
+		ServiceFee a = new ServiceFee(1,LocalDate.now(),7000,db);
+		a.Do();
+				ServiceFee b = new ServiceFee(3,LocalDate.now(),5000,db);
+				b.Do();
+		db.getEmployee(3).deduct.DisplayFees();
+
+	}
+	public static void main(String[] args){
 		EmployeeDB db = new EmployeeDB();
 		//Testing Add
 		TestAddEmployee(db);
@@ -64,6 +73,8 @@ public class Tester
 		TestSalesReceipt(db);
 		db.DisplayEmployees();
 		CheckUnionMemberChanges(db);
+		TestServiceFee(db);
+
 
 	}
 }
