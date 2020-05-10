@@ -1,6 +1,10 @@
-
-import java.util.*;
-import java.time.*;
+import com.google.gson.Gson;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.util.HashMap;
+import java.lang.reflect.Type;
+import com.google.gson.reflect.TypeToken;
 public class Tester
 {
 	public static void TestAddEmployee(EmployeeDB db)
@@ -60,11 +64,27 @@ public class Tester
 		db.getEmployee(3).deduct.DisplayFees();
 
 	}
-	public static void main(String[] args){
+	public void createEmployeeDBandMemberDB()
+	{
+
+	}
+	public static void main(String[] args) throws IOException {
 		EmployeeDB db = new EmployeeDB();
+
+
+
 		//Testing Add
 		TestAddEmployee(db);
 		db.DisplayEmployees();
+		Gson gson = new Gson();
+
+		String jsonString = gson.toJson(db.getDB());
+		Type type = new TypeToken<HashMap<Integer, Employee>>(){}.getType();
+		HashMap<Integer, Employee> clonedMap = gson.fromJson(jsonString, type);
+		FileWriter myWriter = new FileWriter("Database.json");
+		myWriter.write(jsonString);
+		myWriter.close();
+		System.out.println(jsonString);
 		//Testing Remove
 		TestRemoveEmployee(db);
 		db.DisplayEmployees();
@@ -74,7 +94,8 @@ public class Tester
 		db.DisplayEmployees();
 		CheckUnionMemberChanges(db);
 		TestServiceFee(db);
-
+		System.out.println("Cloned Map is");
+		System.out.println(clonedMap);
 
 	}
 }
