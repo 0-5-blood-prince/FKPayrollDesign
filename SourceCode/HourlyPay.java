@@ -1,7 +1,7 @@
 // import org.joda.time.LocalDate;
 import java.util.*;
 import java.time.LocalDate;
-public class HourlyPay implements PaymentInfo
+public class HourlyPay extends PaymentInfo
 {
 	private double hourlyrate;
 	public HashMap <LocalDate , Double> HourMap;
@@ -18,7 +18,7 @@ public class HourlyPay implements PaymentInfo
 	}
 	public void UpdateHours(LocalDate d,double hours)
 	{
-		HourMap.put(d,new Double(hours));
+		HourMap.put(d, hours);
 	}
 	public Double getHours(LocalDate d)
 	{
