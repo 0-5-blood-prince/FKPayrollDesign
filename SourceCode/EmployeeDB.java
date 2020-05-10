@@ -67,6 +67,10 @@ public class EmployeeDB{
 	{
 		return DB.containsKey(id);
 	}
+	public HashMap<Integer,Employee> getDB()
+	{
+		return this.DB;
+	}
 	public void DisplayEmployees()
 	{
 		System.out.println("EmployeeID	Name");
