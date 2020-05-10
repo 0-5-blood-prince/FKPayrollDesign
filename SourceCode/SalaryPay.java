@@ -45,9 +45,26 @@ public class SalaryPay implements PaymentInfo
 	{
 		return d.getDayOfMonth()==d.lengthOfMonth(); 
 	}
+	public void clearSales()
+	{
+		Sales.clear();
+	}
 	public double calculatePay(LocalDate d)
 	{
-		return 0;
+		if(isPay(d)){
+			double pay = salary;
+			Iterator it = Sales.entrySet().iterator(); 
+	        while (it.hasNext()) { 
+	        	Map.Entry elem = (Map.Entry)it.next();
+	        	pay += ( (commissionrate ) * ((Double)elem.getValue()).doubleValue() );
+	        }
+	        return pay;
+
+		}
+		else
+		{
+			return 0;
+		}
 	}
 
 
