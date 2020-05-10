@@ -5,7 +5,7 @@ public class Due
 	public HashMap <LocalDate , Double> Dues;
 	Due()
 	{
-		this.Dues = new HashMap <LocalDate , Double> ();
+		this.Dues = new HashMap<>();
 	}
 	public void update(LocalDate d, double a)
 	{
