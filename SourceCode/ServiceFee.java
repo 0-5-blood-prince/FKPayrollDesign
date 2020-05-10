@@ -18,12 +18,12 @@ public class ServiceFee implements Action{
 		//Implement Ispresent DB
 		if(db.isPresent(id))
 		{
-			Employee e = db.getEmployee(id);
+
 			// db.removeEmployee(id,db.getEmployee(id));
 			if(db.isInUnion(id))
 			{
 				//Not creating New References here
-				e = db.getMember(id);
+				Employee e = db.getMember(id);
 				Deductions deduct = e.getDeductionInfo();
 				deduct.updateFee(date,fee);
 				e.UpdateDeductionInfo(deduct);
