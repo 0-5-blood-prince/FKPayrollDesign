@@ -1,11 +1,11 @@
 public class AddEmployee implements Action{
-	String name;
-	String address;
-	Double hourlyrate;
-	Double salary;
-	Double commissionrate;
-	EmployeeDB db;
-	int type;
+	private String name;
+	private String address;
+	private Double hourlyrate;
+	private Double salary;
+	private Double commissionrate;
+	private EmployeeDB db;
+	private int type;
 	public AddEmployee(String name ,String address,double hourlyrate,EmployeeDB db)
 	{
 		this.name = name;
