@@ -53,6 +53,16 @@ public class EmployeeDB{
 	{
 		return DB.get(id);
 	}
+	public Employee getMember(int id)
+	{
+		Employee e = UnionDB.get(id);
+		if(e.equals(getEmployee(id))){}
+		else
+		{
+			System.out.println("Shouldn't Happen DB != UnionDB");
+		}
+		return e;
+	}
 	public Boolean isPresent(int id)
 	{
 		return DB.containsKey(id);
