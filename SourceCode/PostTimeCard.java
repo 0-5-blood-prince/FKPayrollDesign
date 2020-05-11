@@ -16,26 +16,20 @@ public class PostTimeCard implements Action{
 	public void Do()
 	{
 		//Implement Ispresent DB
+		assert db.isPresent(id);
 		if(db.isPresent(id))
 		{
 			Employee e = db.getEmployee(id);
 			// db.removeEmployee(id,db.getEmployee(id));
-			if(e.isHourlyPay())
-			{
+			assert e.isHourlyPay();
+			if(e.isHourlyPay()) {
 				//Not creating New References here
-				HourlyPay p = (HourlyPay)e.getPaymentInfo();
-				p.UpdateHours(date,hours);
+				HourlyPay p = (HourlyPay) e.getPaymentInfo();
+				p.UpdateHours(date, hours);
 				e.UpdatePaymentInfo(p);
-			}
-			else
-			{
-				System.out.println("Error: Not Hourly Pay");
 			}
 			
 		}
-		else
-		{
-			System.out.println("Error: Given Id Not Found");
-		}
+
 	}
 }
