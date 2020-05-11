@@ -40,6 +40,6 @@ public class AddEmployee implements Action{
 			e.UpdatePaymentInfo(p);
 			db.addEmployee(empid,e);
 		}
-
+		assert db.isPresent(empid);
 	}
 }
