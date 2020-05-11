@@ -16,10 +16,12 @@ public class ServiceFee implements Action{
 	public void Do()
 	{
 		//Implement Ispresent DB
+		assert db.isPresent(id);
 		if(db.isPresent(id))
 		{
 
 			// db.removeEmployee(id,db.getEmployee(id));
+			assert db.isInUnion(id);
 			if(db.isInUnion(id))
 			{
 				//Not creating New References here
@@ -29,15 +31,9 @@ public class ServiceFee implements Action{
 				e.UpdateDeductionInfo(deduct);
 				
 			}
-			else
-			{
-				System.out.println("Error: Not in Union");
-			}
+
 			
 		}
-		else
-		{
-			System.out.println("Error: Given Id Not Found");
-		}
+
 	}
 }
