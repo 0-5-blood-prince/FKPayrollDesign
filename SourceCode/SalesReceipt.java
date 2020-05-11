@@ -16,33 +16,25 @@ public class SalesReceipt implements Action{
 	public void Do()
 	{
 		//Implement Ispresent DB
+		assert db.isPresent(id);
 		if(db.isPresent(id))
 		{
 			Employee e = db.getEmployee(id);
+			assert e.isSalaryPay();
 			// db.removeEmployee(id,db.getEmployee(id));
 			if(e.isSalaryPay())
 			{
 				//Not creating New References here
 				SalaryPay p = (SalaryPay)e.getPaymentInfo();
+				assert p.isCommission();
 				if(p.isCommission())
 				{
 					p.UpdateSales(date,amount);
 					e.UpdatePaymentInfo(p);
 				}
-				else
-				{
-					System.out.println("Error: Not Commissioned Salary Pay");
-				}
+
 			}
-			else
-			{
-				System.out.println("Error: Not Salary Pay");
-			}
-			
-		}
-		else
-		{
-			System.out.println("Error: Given Id Not Found");
+
 		}
 	}
 }
