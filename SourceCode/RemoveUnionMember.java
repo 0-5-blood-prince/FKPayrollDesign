@@ -11,8 +11,13 @@ public class RemoveUnionMember implements Action{
 	public void Do()
 	{
 		//Implement Ispresent DB
+		assert db.isPresent(id);
 		if(db.isPresent(id))
 		{
+//			System.out.println(id);
+//			System.out.println("Remove Union"+db.isInUnion(id));
+			assert db.isInUnion(id);
+
 			if(db.isInUnion(id))
 			{
 				Employee e = db.getEmployee(id);
@@ -25,6 +30,8 @@ public class RemoveUnionMember implements Action{
 			}
 
 		}
+		assert !db.isInUnion(id);
+		assert db.isPresent(id);
 
 	}
 }
