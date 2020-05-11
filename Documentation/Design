@@ -1,0 +1,98 @@
+ASSUMPTIONS
+    While Adding Employee the PaymentInfo type ie HourlyPay or SalaryPay should be given.
+    While adding Salary type employee you can't mention Union Member or not
+    To Remove a Employee a id is enough
+    To Add a Union Member weekly due rate is required
+    To Remove a Union Member a id is enough
+    Time cards are posted every day
+    Sales are posted every friday
+    Service Fees are posted every Friday
+    Clear option to be used whenever payment is done
+    UnionweeklyDues are updated every Friday
+    UnionFees are updated every Friday
+    calculateDeductions in Deductions object is only called on payday
+    All -ve Pays are added to Due as +ve Dues
+    payrollrun handles all above Pays and Deducts assumptions
+    No Deductions before the First time Employee joins Union
+
+
+PRE-CONDITIONS and POST-CONDITIONS
+    For Actions
+    AddEmployee|Do()
+        pre: None
+        post: should be in Employee Database
+    RemoveEmployee|Do()
+        pre: should be in database
+        post: should not be in both employeemap and union map
+    AddUnionMember|Do()
+        pre: Is in employee database and Not in Union
+        post: Is in Union
+    RemoveUnionMember|Do()
+        pre: Is in employee database and in Union
+        post: Is in employee database and not in Union
+    PostTimeCards|Do()
+        pre: Is in database and is Hourly
+        post: none
+    SalesReceipt|Do()
+        pre: Is in database and is Salary
+        post: none
+    ServiceFee|Do()
+        pre: is in database and is in union
+        post: none
+    UpdateEmployeeDetails
+        pre:is in database
+        post:none
+    UpdateHourlyRate
+        pre:is in database and is Hourly
+        post:none
+    UpdateComRate
+        pre:is in database and is Salary
+        post:none
+    UpdateDuerate
+        pre:is in database and is Deduct Open
+        post:none
+
+
+DESIGN DECISIONS
+    EmployeeDB contains HashMap maps EmployeeId to Employee Object.While Adding Employee EmployeeID is incremented making every employee unique
+    and other HashAMp for Union MEmbers mapping from employee id to EmployeeObject. addemployee/addmember adds employee object to respective map
+    remove member deletes from memeber map and remove employee removes member from both EmployeeMAp and UnionMap.To avoid any future clashes
+
+    In Employee all Non-Buildin-CLass types are initialized in Constructor
+    To distinguish between Two Salary Types We use two classes HourlyPay and SalaryPay , both extend PaymentInfo abstract class .
+    PaymentInfo was first created as Interface but for Json purposes had to use as abstract class .The Employee has PaymentInfo object
+    which has the information needed by Employee regarding pay,Enum Payment type is used to easily recognize paymenttype.Seperate Update
+    method to update paymentinfo easily.(SO THAT EMPLOYEE CAN CONVERT FROM HOURLY to SALARY with just one method).Scope for additional functionality.
+
+    HourlyPay has a HashMap from Date to Hours.isPay decides Whether date is Payday or not.calculatePay calculates the pay using all
+    HashMap entries and hourlyrate.There is a clear option to clear once Payment is completed it should be called so that for consecutive paydates
+    Pays are correct
+
+    SalaryPay has a HashMap from Date to salesamount.The commision rate decides whether the employee is commisioned or not.so if you want to convert
+    to non commmisioned you can just set this to 0(only during payday).isPay decides Whether date is Payday or not.calculatePay calculates the pay using all
+    HashMap entries and salary,commissionrate.Payment is done including commissions on payday.There is a clear option to clear once Payment is completed it should be called so that for consecutive paydates
+    Pays are correct.
+
+    Due class is created to deal with the -ve Pays during payday,HashMap date to Due,calculateDue,clear option,even though calculateDue don't use date
+    it is required for future extensibilities.
+    ServiceCharges is for all the Dues(ie Weekly) and Fees involving Union activities.Weeklyduerate which can be updated.HashMap of WeeklyDues and Fees
+    with these hashmaps even when duerate changed the old due doesn't.calulateCharges sums up all Entries  in WeeklyDues and Fees.CLear option for both Fess,dues
+    clear option.Even though calculateCharges don't use date it is required for future extensibilities.
+
+    Instead of Creating both type objects in Employee I thought its best too keep it as one
+    So Deductions class is created in this class you can deal with all Update/get functions of Due class and ServiceCharge.
+    Deductions Contains more or else every operation of Due and ServiceCharges class.calculateDeductions sums both claculateDue and claculateCharges
+    This way when Employee gets removed from Union the Charges do not get lost so.RemoveUnionMember Employee is removed from Union its duerate is made 0.
+    Clear option calls Clear from Due and ServiceCharges classes.Even though calculateDeductions don't use date it is required for future extensibilities
+
+    Employee Object consists of Deductions Object which is like a Deduction Account which is opened when Employee joins Union.This account is never closed
+    This Deductions object is Updated when dues / Servicecharges are added to Employee
+
+    Action is Interface with Do() method
+    All Actions ie Add/Remove/Post/SalesReceipt/ServiceFee implement this interface
+
+    UpdateDetails is Interface with update() method
+    All Update Actions implement this interface
+
+
+
