@@ -13,8 +13,10 @@ public class AddUnionMember implements Action{
 	public void Do()
 	{
 		//Implement Ispresent DB
+		assert (db.isPresent(id));
 		if(db.isPresent(id))
 		{
+			assert !db.isInUnion(id);
 			if (db.isInUnion(id)) {
 				return;
 			}
@@ -36,5 +38,6 @@ public class AddUnionMember implements Action{
 			}
 			db.addMember(id,e);
 		}
+		assert db.isInUnion(id);
 	}
 }
