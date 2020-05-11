@@ -11,7 +11,7 @@ public class UpdateDueRate implements UpdateDetails{
     public void update()
     {
         Employee e = db.getEmployee(id);
-        if(db.isInUnion(id))
+        if(e.isDeductOpen())
         {
             Deductions d = e.getDeductionInfo();
             d.updateDueRate(rate);
