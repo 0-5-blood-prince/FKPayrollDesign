@@ -1,2 +1,2 @@
 # FKPayrollDesign
-Project DEvelopement is done in Dev Branch
+Project Developement is done in Dev Branch
